@@ -4,14 +4,14 @@ on:
   schedule:
     # 毎日 日本時間 9:00 (0:00 UTC) に更新
     - cron: "0 0 * * *"
-  workflow_dispatch: # 手動でいつでも実行可能
+  workflow_dispatch: # ボタン一つでいつでも更新可能
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: generate-github-profile-summary-cards
     permissions:
-      contents: write # 書き込み権限を明示
+      contents: write
 
     steps:
       - name: Checkout
@@ -20,11 +20,13 @@ jobs:
       - name: Generate cards
         uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
-          # 標準のトークンでOK（Privateリポジトリも含めるならPAT推奨）
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           USERNAME: ${{ github.repository_owner }}
-          BRANCH_NAME: "main"
-          # 数値ではなく文字列として渡すことでズレを防止
+          # 常に現在のメインブランチに保存
+          BRANCH_NAME: ${{ github.event.repository.default_branch }}
+          # 日本時間に固定（引用符で確実に指定）
           UTC_OFFSET: "9" 
+          # 最新感のあるモダンなテーマ（2077, tokyonight, radical などがおすすめ）
+          THEME: tokyonight
           AUTO_PUSH: true
