@@ -1,7 +1,5 @@
 <div align="center">
 
-# 📊 GitHub Profile Stats
-
 [![](https://raw.githubusercontent.com/thaya128/thaya128/main/profile-summary-card-output/2077/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
 
 [![](https://raw.githubusercontent.com/thaya128/thaya128/main/profile-summary-card-output/2077/1-repos-per-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
