@@ -26,5 +26,4 @@ jobs:
           USERNAME: ${{ github.repository_owner }}
           BRANCH_NAME: ${{ github.event.repository.default_branch }}
           UTC_OFFSET: "9" 
-          THEME: tokyonight # 最新感のあるテーマ
           AUTO_PUSH: true
