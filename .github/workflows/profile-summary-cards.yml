@@ -4,7 +4,7 @@ on:
   schedule:
     # 毎日 日本時間 9:00 (0:00 UTC) に更新
     - cron: "0 0 * * *"
-  workflow_dispatch: # ボタン一つでいつでも更新可能
+  workflow_dispatch: # 手動でいつでも実行可能
 
 jobs:
   build:
@@ -20,13 +20,11 @@ jobs:
       - name: Generate cards
         uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # ここを secrets.GITHUB_TOKEN から SUMMARY_GITHUB_TOKEN に変更
+          GITHUB_TOKEN: ${{ secrets.SUMMARY_GITHUB_TOKEN }}
         with:
           USERNAME: ${{ github.repository_owner }}
-          # 常に現在のメインブランチに保存
           BRANCH_NAME: ${{ github.event.repository.default_branch }}
-          # 日本時間に固定（引用符で確実に指定）
           UTC_OFFSET: "9" 
-          # 最新感のあるモダンなテーマ（2077, tokyonight, radical などがおすすめ）
-          THEME: tokyonight
+          THEME: tokyonight # 最新感のあるテーマ
           AUTO_PUSH: true
